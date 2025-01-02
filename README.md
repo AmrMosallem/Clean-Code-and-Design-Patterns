@@ -48,8 +48,6 @@ Each section includes practice questions and examples to reinforce learning, mak
 ---
 
 <div id='clean-code'/>
-  
-<br>
 
 # Clean Code
 
