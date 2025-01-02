@@ -996,7 +996,7 @@ Good comments are **rare, focused, and valuable**. If the code can explain itsel
 
 ## **Clean Code Practice Questions**
 
-### Question 1: Consider the method below. Do the variables need a more meaningful context? If so, suggest them?
+### Question 1: Consider the method below. Do the variables need a more meaningful context? If so, suggest them.
 
 ```java
 private void printGuessStatistics(char candidate, int count) {
@@ -1193,7 +1193,7 @@ public class Main {
 
 3. **Enhanced readability**: Structured code in logical blocks and removed hardcoded values where possible.
 
-### Question 3: According to the clean code rules, what are the bad practice in the following code?
+### Question 3: According to the clean code rules, what are the bad practices in the following code?
 
 ```java
 private boolean isValidInsertion(int column) {
@@ -1290,24 +1290,21 @@ public void emailClients(List<Client> clients) {
 
 **Clean Code Rules Violated:**
 
-1. **`String yyyymmdstr = new SimpleDateFormat("YYYY/MM/DD").format(new Date());`**
+1. **`String yyyymmdstr = new SimpleDateFormat("YYYY/MM/DD").format(new Date());`**  
+**Violation**: Misleading Naming.
+    - The variable name `yyyymmdstr` is unclear and does not follow descriptive naming conventions.
 
-   - **Violation**: Misleading Naming.
-     - The variable name `yyyymmdstr` is unclear and does not follow descriptive naming conventions.
+2. **`getUserInfo(); getClientData(); getCustomerRecord();`**  
+**Violation**: Function Names Should Reveal Intent.
+    - These names are too generic and don't clarify what specific data is retrieved.
 
-2. **`getUserInfo(); getClientData(); getCustomerRecord();`**
+3. **`setTimeout(blastOff, 86400000);`**  
+ **Violation**: Magic Numbers.
+    - `86400000` is unclear; use a named constant like `MILLISECONDS_IN_A_DAY` for clarity.
 
-   - **Violation**: Function Names Should Reveal Intent.
-     - These names are too generic and don't clarify what specific data is retrieved.
-
-3. **`setTimeout(blastOff, 86400000);`**
-
-   - **Violation**: Magic Numbers.
-     - `86400000` is unclear; use a named constant like `MILLISECONDS_IN_A_DAY` for clarity.
-
-4. **`public void emailClients(List<Client> clients) {...}`**
-   - **Violation**: Function Does More Than One Thing.
-     - The method retrieves client records, checks their status, and sends emails. These responsibilities should be separated.
+4. **`public void emailClients(List<Client> clients) {...}`**  
+**Violation**: Function Does More Than One Thing.
+    - The method retrieves client records, checks their status, and sends emails. These responsibilities should be separated.
 
 ### Question 6: Answer the questions by referring to the version of the code in C shown below:
 
@@ -1387,7 +1384,7 @@ public void Eq(double a, double b, double c) {
 }
 ```
 
-#### **Answer:**
+#### **Solution:**
 
 ```java
 public void solveQuadraticEquation(double a, double b, double c) {
@@ -1426,6 +1423,8 @@ private double calculateSingleRoot(double a, double b) {
 3. **Extracted logic into helper methods**: Split logic into smaller methods (`calculateDiscriminant`, `calculateRealRoots`, and `calculateSingleRoot`) for better readability and reusability.
 4. **Removed redundant code**: Combined repetitive logic to make the code more concise and maintainable.
 
+---
+
 <div id="code-refactor" \>
 
 # Code Refactoring
@@ -1436,21 +1435,21 @@ private double calculateSingleRoot(double a, double b) {
 
 **Refactoring** is the process of restructuring existing code to improve its internal structure without changing its external behavior.
 
-###**Reasons for Refactoring:**
+### **Reasons for Refactoring:**
 
 1. **Bad Code Quality**: Code is poorly written or difficult to read.
 2. **Code Smells**: Signs of problematic code needing improvement.
 3. **Technical Debt**: Delayed improvements that hinder future progress.
 4. **Complex Code**: Code that is overly complicated and hard to work with.
 
-###**Advantages of Refactoring:**
+### **Advantages of Refactoring:**
 
 1. **Improved Readability**: Cleaner, easier-to-understand code.
 2. **Better Extendibility**: Simplified addition of new features.
 3. **Lower Maintenance Costs**: Reduced complexity minimizes expenses.
 4. **Enhanced Architecture**: Structural improvements without behavior changes.
 
-###**Challenges of Refactoring:**
+### **Challenges of Refactoring:**
 
 1. **Time Constraints**: Limited time for improvements.
 2. **Reluctance**: Resistance to change due to familiarity with existing code.
@@ -1482,12 +1481,11 @@ Regular refactoring minimizes code smells, ensuring maintainable, efficient, and
 
 <div id = "code-refactor-technique" \>
 
-## Simplifying Conditional Expression Techniques
+## **Simplifying Conditional Expression Techniques**
 
 ### 1. Decompose Conditional
 
-**Problem:** Complex conditional expressions are hard to read and maintain.
-
+**Problem:** Complex conditional expressions are hard to read and maintain.  
 **Solution:** Break down the conditional logic into separate, meaningful methods or functions.
 
 **Example Before Refactoring:**
@@ -1500,7 +1498,7 @@ if (user.getAge() > 18 && user.hasValidId() && user.isNotBlacklisted()) {
 
 The logic is crammed into the `if` condition, which can be hard to understand at a glance.
 
-**Example After Refactoring:**
+✅ **Example After Refactoring:**
 
 ```java
 if (isEligibleForAccess(user)) {
@@ -1514,10 +1512,10 @@ private boolean isEligibleForAccess(User user) {
 
 Now the `if` condition clearly expresses its intent. The detailed logic is moved to a method that explains what is being checked.
 
+---
 ### 2. Consolidate Conditional Expression
 
-**Problem:** Multiple conditions lead to the same result, making the code repetitive.
-
+**Problem:** Multiple conditions lead to the same result, making the code repetitive.  
 **Solution:** Combine these conditions into a single, unified expression.
 
 **Example Before Refactoring:**
@@ -1531,7 +1529,7 @@ double calculateTax() {
 }
 ```
 
-**Example After Refactoring:**
+✅ **Example After Refactoring:**
 
 ```java
 double calculateTax() {
@@ -1548,8 +1546,7 @@ Multiple conditions are consolidated into a single helper method, `isNotTaxable`
 
 ### 3. Replace Nested Conditional with Guard Clause
 
-**Problem:** Deeply nested conditionals make it hard to follow the normal flow of the program.
-
+**Problem:** Deeply nested conditionals make it hard to follow the normal flow of the program.  
 **Solution:** Use guard clauses to handle special cases early, allowing the main logic to be simpler and flatter.
 
 **Example Before Refactoring:**
@@ -1572,7 +1569,7 @@ public String getMembershipType(int age, boolean isStudent) {
 }
 ```
 
-**Example After Refactoring:**
+✅ **Example After Refactoring:**
 
 ```java
 public String getMembershipType(int age, boolean isStudent) {
@@ -1587,8 +1584,7 @@ By using guard clauses, special cases (`age < 12`, `age < 18`, `isStudent`) are 
 
 ### 4. Replace Conditional with Polymorphism
 
-**Problem:** Conditionals vary behavior based on object types or properties.
-
+**Problem:** Conditionals vary behavior based on object types or properties.  
 **Solution:** Use polymorphism by creating subclasses and overriding methods for specific behavior.
 
 **Example Before Refactoring:**
@@ -1604,7 +1600,8 @@ if (shapeType.equals("Circle")) {
 ```
 
 Adding a new shape would require modifying this `if-else` block, which violates the **Open/Closed Principle**.
-**Example After Refactoring:**
+
+✅ **Example After Refactoring:**
 
 ```java
 abstract class Shape {
@@ -1636,9 +1633,11 @@ shape.draw();
 
 Now, adding a new shape only requires creating a new subclass of `Shape`, no changes to existing code are needed.
 
+---
+
 <div id = "solid-principles" \>
 
-# SOLID Principles
+# **SOLID Principles**
 
 <div id = "solid-intro" \>
 
@@ -1667,7 +1666,7 @@ The SOLID principles are guidelines in **object-oriented programming** that help
 ### **Coupling**
 
 - **Definition**: The degree of dependency between different components or modules.
-- **High Coupling (Bad)**:
+- ⚠️ **High Coupling (Bad)**:
 
   - Strong interdependencies between components.
   - Leads to tightly bound systems, making changes more complex.
@@ -1704,7 +1703,7 @@ The SOLID principles are guidelines in **object-oriented programming** that help
     }
     ```
 
-- **Low Coupling (Good)**:
+- ✅ **Low Coupling (Good)**:
 
   - Minimal dependencies between components.
   - Results in a more modular, maintainable system.
@@ -1767,7 +1766,7 @@ The SOLID principles are guidelines in **object-oriented programming** that help
 ### **Cohesion**
 
 - **Definition**: The degree to which responsibilities within a module or class are related.
-- **High Cohesion**:
+- ✅ **High Cohesion**:
 
   - A module or class has a focused and well-defined purpose.
   - Easier to understand, maintain, and extend.
@@ -1844,7 +1843,7 @@ class Report {
 }
 ```
 
-### **Good Example (Adheres to SRP)**
+### ✅ **Good Example (Adheres to SRP)**
 
 Split responsibilities into separate classes.
 
@@ -1894,7 +1893,7 @@ class Shape {
 }
 ```
 
-### **Good Example (Adheres to OCP)**
+### ✅ **Good Example (Adheres to OCP)**
 
 Extend the behavior using polymorphism.
 
@@ -1950,7 +1949,7 @@ class Penguin extends Bird {
 }
 ```
 
-### **Good Example (Adheres to LSP)**
+### ✅ **Good Example (Adheres to LSP)**
 
 Separate behaviors into appropriate interfaces.
 
@@ -2001,7 +2000,7 @@ class Robot implements Worker {
 }
 ```
 
-### **Good Example (Adheres to ISP)**
+### ✅ **Good Example (Adheres to ISP)**
 
 Split interfaces into smaller, focused ones.
 
@@ -2063,7 +2062,7 @@ class Computer {
 }
 ```
 
-### **Good Example (Adheres to DIP)**
+### ✅ **Good Example (Adheres to DIP)**
 
 High-level module depends on an abstraction.
 
@@ -2107,7 +2106,7 @@ class Computer {
 
 <div id = "solid-questions" \>
 
-## Solid Principles Practice Questions
+## **Solid Principles Practice Questions**
 
 ### Question 1: For the following scenarios, which SOLID principle violated in each:
 
@@ -2120,6 +2119,8 @@ class Computer {
 1. **CityMap Class:** Violates the Single Responsibility Principle (SRP). The CityMap class is responsible for multiple tasks (managing cities, drawing the map, calculating population), and it should only have one responsibility. These should be separated into different classes.
 2. **Computer and ComputerUpgrader:** Violates the Liskov Substitution Principle (LSP). The ComputerUpgrader assumes that any Computer can be upgraded, but a Phone cannot have its RAM upgraded. The upgrader should handle the differences between Computer types properly without making assumptions.
 3. **Game Interface:** Violates the Interface Segregation Principle (ISP). The Game interface is forcing SingleplayerGame and MultiplayerGame to implement methods that don't apply to them (e.g., SingleplayerGame doesn’t need getServerList, and MultiplayerGame doesn’t need pauseGame). Separate interfaces should be used for the different functionalities.
+
+---
 
 ### Question 2: Which SOLID principle can solve the problem in this code segment?
 
@@ -2135,7 +2136,7 @@ public class DeliveryCompany{
 }
 ```
 
-#### **Answer:**
+#### **Solution:**
 
 The problem in the code violates the **Dependency Inversion Principle (DIP)**, as `DeliveryCompany` directly depends on the `DeliveryDriver` class.
 
@@ -2171,6 +2172,9 @@ public class DeliveryCompany {
 
 Now, `DeliveryCompany` depends on `IDeliveryService`, which allows for flexibility in using different delivery services.
 
+---
+
+
 ### Question 3: Which SOLID principle can solve the problem in this code segment? Write the solution code.
 
 ```java
@@ -2189,7 +2193,7 @@ class Human {
 }
 ```
 
-#### **Answer:**
+#### **Solution:**
 
 The problem in this code violates the **Single Responsibility Principle (SRP)**. The `Human` class is responsible for both managing a person's details (name, age) and constructing a full address, which is not the primary responsibility of the class.
 
@@ -2245,6 +2249,9 @@ In this solution:
 
 This follows the **Single Responsibility Principle (SRP)** and makes the code more maintainable and easier to extend.
 
+---
+
+
 <div id="dp"\>
 
 # Design Patterns
@@ -2261,14 +2268,10 @@ This follows the **Single Responsibility Principle (SRP)** and makes the code mo
 2. **Shared Vocabulary**: Patterns create a common language for developers, simplifying communication.
 3. **Reusable Architectures**: They enable large-scale reuse of software designs, saving time and effort.
 
----
-
 ### Drawbacks of Design Patterns:
 
 1. **Human-Driven Integration**: Applying patterns requires experience and thoughtful consideration, making it labor-intensive.
 2. **Experience-Based Validation**: Patterns are validated through practice and discussion, not automated testing.
-
----
 
 ### Key Concepts of Design Patterns:
 
@@ -2277,13 +2280,14 @@ This follows the **Single Responsibility Principle (SRP)** and makes the code mo
 3. **Solution**: The design elements, their roles, and how they interact to solve the problem.
 4. **Consequences**: The benefits and trade-offs of using the pattern, including its impact on system flexibility, extensibility, and portability.
 
+---
+
 <div id="dp-creational"\>
 
 ## **Creational Design Patterns**
 
 Creational design patterns focus on the process of object creation. They abstract the instantiation logic to ensure flexibility and reusability, allowing you to create objects in a way that suits the situation without tightly coupling the code to specific implementations.
 
----
 
 <div id="dp-singleton"\>
 
@@ -2331,6 +2335,8 @@ Singleton obj2 = Singleton.getInstance();
 // obj1 and obj2 are the same instance.
 ```
 
+---
+
 ### **Practice Question: Singleton Logger**
 
 Create a logging system where only one instance of the logger exists throughout the application. The logger should:
@@ -2344,7 +2350,7 @@ Create a logging system where only one instance of the logger exists throughout 
 - Ensure the logger has only one instance.
 - Demonstrate the singleton behavior by logging messages from different parts of your program.
 
-#### **Answer**:
+#### **Solution**:
 
 ```java
 import java.util.ArrayList;
@@ -2410,8 +2416,6 @@ public class SingletonLoggerDemo {
     }
 }
 ```
-
----
 
 **Explanation**
 
@@ -2483,12 +2487,12 @@ Shape shape2 = ShapeFactory.getShape("Rectangle");
 shape2.draw(); // Output: Drawing a Rectangle
 ```
 
+---
+
 ### **Practice Question: Payment Processing System**
 
 **Scenario**:  
 You are building a **payment processing system** for an online store. The system must handle different payment methods: **Credit Card**, **PayPal**, and **Bank Transfer**. Each payment method processes transactions differently but implements the same interface to ensure consistency.
-
----
 
 **Requirements**:
 
@@ -2497,15 +2501,6 @@ You are building a **payment processing system** for an online store. The system
 3. Use the **Factory Method Pattern** to allow the system to create the appropriate payment processor based on the user input.
 4. Write a `PaymentProcessorFactory` class that provides the factory method.
 5. In the `Main` class, simulate a scenario where the user selects a payment method and processes a payment of $150.
-
----
-
-**Expected Output**:  
-When you run the program, it should print something like:
-
-- `Processing $150 via Credit Card.`
-- `Processing $150 via PayPal.`
-- `Processing $150 via Bank Transfer.`
 
 #### **Solution:**
 
@@ -2654,6 +2649,8 @@ carBuilder.setEngine("V8")
 Car car = carBuilder.build();
 ```
 
+---
+
 ### **Practice Question: Computer Builder**
 
 **Scenario**:  
@@ -2748,9 +2745,7 @@ These patterns address common problems in software design:
 
 ## **Structural Design Patterns**
 
-Structural design patterns focus on organizing and constructing class structures in different ways. They utilize inheritance and composition techniques to build complex objects from simpler ones.
-
-These patterns address design challenges related to the arrangement and relationships of classes and objects.
+Structural design patterns focus on organizing and constructing class structures in different ways. They utilize inheritance and composition techniques to build complex objects from simpler ones. These patterns address design challenges related to the arrangement and relationships of classes and objects.
 
 <div id="dp-adapter"\>
 
@@ -2814,6 +2809,8 @@ public class AdapterExample {
 - **Problem:** The client and the service have incompatible interfaces.
 - **Solution:** The adapter translates the interface of the service into something the client understands.
 - **Explanation of Example:** The `UsbCAdapter` allows the `MicroUsbDevice` to connect via a USB-C interface, bridging the gap between the two incompatible systems.
+
+---
 
 ### **Practice Question: Shape Adapter**
 
@@ -2969,6 +2966,8 @@ public class CompositeExample {
 - **Solution:** Create a structure (like a tree) where both individual objects and composites (groups) can be treated the same.
 - **Explanation of Example:** The `Folder` can contain both `File` objects and other `Folder` objects. The `showDetails` method works for individual files and nested folders alike.
 
+---
+
 ### **Practice Question: Company Department Hierarchy**
 
 **Scenario**:  
@@ -2976,8 +2975,6 @@ Design a system to represent the hierarchy of a company's departments and employ
 
 - **Employees** are the leaf nodes, as they don't have any subordinates.
 - **Departments** are composite nodes that can contain other departments or employees.
-
----
 
 **Requirements**:
 
@@ -3070,15 +3067,12 @@ public class CompanyDepartment {
 
 The **Facade** Pattern provides a simplified interface to a complex subsystem. It hides the complexity of the system and provides an easy-to-use API.
 
-**Problem:**
-A system has multiple complex subsystems, and you want to provide a simplified interface to clients.
-
-**Solution:**
-The Facade pattern provides a unified, higher-level interface that simplifies interactions with the subsystems.
+**Problem:** A system has multiple complex subsystems, and you want to provide a simplified interface to clients.  
+**Solution:** The Facade pattern provides a unified, higher-level interface that simplifies interactions with the subsystems.
 
 ---
 
-### Example
+### **Example**
 
 When you turn on your TV, you don’t need to handle individual components like power, speakers, and display. Instead, you press one button, and everything works behind the scenes. The **facade** simplifies this process.
 
@@ -3135,28 +3129,23 @@ public class FacadeExample {
 - **Solution:** A facade provides a single, simplified interface to interact with those subsystems.
 - **Explanation of Example:** The `TelevisionFacade` hides the complexity of managing `Power`, `Speakers`, and `Display` subsystems, allowing the client to turn on the TV with one method call.
 
+---
+
 ### **Practice Question: Home Entertainment System**
-
-#### **Scenario**:
-
-You are tasked with creating a system to simplify the operation of a **home entertainment system**. The system consists of the following subsystems:
-
+**Scenario**:
+You are tasked with creating a system to simplify the operation of a **home entertainment system**.  
+The system consists of the following subsystems:
 1. **TV**
 2. **Sound System**
 3. **Streaming Service**
 
 Users should be able to:
-
 1. Start a "Movie Night" with one action that turns on the TV, sets up the sound system, and starts the streaming service.
 2. End "Movie Night" with one action that turns off all the subsystems.
-
 **Requirements**:
-
 1. Create classes for each subsystem (`TV`, `SoundSystem`, `StreamingService`) with methods to turn them on, off, or start specific functionalities.
 2. Implement a **Facade Class** (`HomeTheaterFacade`) to simplify interactions with these subsystems.
 3. In the `Main` class, demonstrate starting and ending "Movie Night" using the facade.
-
----
 
 #### **Solution:**
 
@@ -3261,7 +3250,7 @@ The **Strategy** Pattern is a behavioral design pattern that allows you to defin
 
 You are designing a transportation app. Depending on the user's choice, the app should calculate the travel time using different transportation modes: car, bus, or bike. The calculation logic differs for each mode.
 
-#### **Without Strategy Pattern**:
+#### ⚠️ **Without Strategy Pattern**:
 
 ```java
 class Transportation {
@@ -3287,7 +3276,7 @@ public class ProblemExample {
 }
 ```
 
-#### **Solution with Strategy Pattern:**
+#### ✅ **Solution with Strategy Pattern:**
 
 ```java
 // Strategy Interface
@@ -3344,6 +3333,8 @@ public class StrategyExample {
 }
 ```
 
+---
+
 ### Practice Question: Payment Processor
 
 **Problem**:  
@@ -3352,7 +3343,6 @@ You are building a payment system that supports multiple payment methods, such a
 **Task**:  
 Implement the Strategy Design Pattern to handle multiple payment methods. Create a `PaymentProcessor` class that can use different payment strategies. The system should process payments using the strategy specified at runtime.
 
----
 
 #### **Solution:**
 ```java
@@ -3461,7 +3451,7 @@ The **Observer** Pattern is a behavioral design pattern that defines a one-to-ma
 ### **Example:**
 You are designing a notification service. Depending on the user's subscription type, the service should send updates via email or SMS. The system should allow adding or removing subscribers dynamically and notify all active subscribers when a new message is sent.
 
-#### **Before Applying the Observer Pattern:**
+#### ⚠️ **Before Applying the Observer Pattern:**
 Here is an example of a notification system before implementing the Observer Pattern. All notifications are hardcoded, making it difficult to add or remove notification types dynamically.
 
 ```java
@@ -3501,7 +3491,7 @@ public class BeforeObserverExample {
 2. **Scalability**: Adding a new notification type (e.g., push notifications) requires adding a new method and changing the logic in `sendNotification`. (Violating Open-Closed Principle)  
 3. **Tight Coupling**: The `NotificationService` class depends directly on the notification methods, making the system inflexible.  
 
-#### **After Applying the Observer Pattern:**
+#### ✅ **After Applying the Observer Pattern:**
 The Observer Pattern resolves these issues by allowing notification types to be added or removed dynamically without modifying the `NotificationService` logic.
 ```java
 import java.util.ArrayList;
