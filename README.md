@@ -80,30 +80,30 @@ int elapsedTimeInDays; // Clearly indicates what the variable stores.
 
 #### **Example 2 (Minesweeper):**
 
-**Bad Practice:**
+**⚠️ Bad Practice:**
 
 ```java
-    public List<int[]> getThem() {
-        List<int[]> list1 = new ArrayList<>();
-        for (int[] x : theList) {
-            if (x[0] == 4)
-                list1.add(x);
-        }
-        return list1;
+public List<int[]> getThem() {
+    List<int[]> list1 = new ArrayList<>();
+    for (int[] x : theList) {
+        if (x[0] == 4)
+            list1.add(x);
     }
+    return list1;
+}
 ```
 
-**Good Practice:**
+**✅ Good Practice:**
 
 ```java
-    public List<Cell> getFlaggedCells() {
-        List<Cell> flaggedCells = new ArrayList<Cell>();
-        for (Cell cell : gamesBoard) {
-            if (cell.isFlagged())
-            flaggedCells.add(cell);
-        }
-        return flaggedCells;
+public List<Cell> getFlaggedCells() {
+    List<Cell> flaggedCells = new ArrayList<Cell>();
+    for (Cell cell : gamesBoard) {
+        if (cell.isFlagged())
+        flaggedCells.add(cell);
     }
+    return flaggedCells;
+}
 ```
 
 ---
