@@ -350,7 +350,7 @@ By following these practices, your code will be cleaner, more readable, and easi
 
 Functions should be short and concise, ideally **<=150 characters per line** and **<20 lines** in length. Long functions are harder to read, understand, and maintain.
 
-#### **Example of a Problematic Function (Too Long)** 
+#### ⚠️ **Example of a Problematic Function (Too Long)** 
 
 ```java
 public void processOrder(Order order) {
@@ -411,7 +411,7 @@ Each function does one thing, making it easier to understand and modify.
 
 Functions should focus on a single responsibility. A function that does too much is harder to test and maintain.
 
-#### **Bad Example (Does Multiple Things)**
+#### ⚠️ **Bad Example (Does Multiple Things)**
 
 ```java
 public void processUser(User user) {
@@ -455,7 +455,7 @@ Each function does a single task, making it simpler to test and modify.
 
 Think of the "what", not the "how". Each function should operate at a single level of abstraction. Mixing high-level and low-level details makes the code harder to follow.
 
-#### **Bad Example (Mixing What and How)**
+#### ⚠️ **Bad Example (Mixing What and How)**
 
 ```java
 public void sendEmail(User user) {
@@ -502,7 +502,7 @@ The high-level (main) function focuses on **what** needs to happen, while the lo
 
 Code should flow naturally from higher-level functions at the top to lower-level details at the bottom, like reading a story. This makes the code easier to understand.
 
-#### **Bad Example**
+#### ⚠️ **Bad Example**
 
 ```java
 private void validateOrder(Order order) { /* ... */ }
@@ -678,7 +678,7 @@ assertExpectedEqualsActual(expected, actual); // Clearer intent.
 
 A function should either **do something** or **return something**, but not both.
 
-#### **Bad Example**
+#### ⚠️ **Bad Example**
 
 ```java
 public boolean saveUser(User user) {
@@ -705,7 +705,7 @@ public boolean isUserSaved(User user) {
 ### **11. Switch Statements**
 Avoid large `switch` statements for maintainability. Instead, use polymorphism.
 
-#### **Bad Example**
+#### ⚠️ **Bad Example**
 
 ```java
 class Employee {
@@ -1295,8 +1295,8 @@ public void emailClients(List<Client> clients) {
     - The variable name `yyyymmdstr` is unclear and does not follow descriptive naming conventions.
 
 2. **`getUserInfo(); getClientData(); getCustomerRecord();`**  
-**Violation**: Function Names Should Reveal Intent.
-    - These names are too generic and don't clarify what specific data is retrieved.
+**Violation**: Different Names for the same concept.
+    - Consistent terminology should be used across the codebase to avoid confusion.
 
 3. **`setTimeout(blastOff, 86400000);`**  
  **Violation**: Magic Numbers.
@@ -1488,7 +1488,7 @@ Regular refactoring minimizes code smells, ensuring maintainable, efficient, and
 **Problem:** Complex conditional expressions are hard to read and maintain.  
 **Solution:** Break down the conditional logic into separate, meaningful methods or functions.
 
-**Example Before Refactoring:**
+⚠️ **Example Before Refactoring:**
 
 ```java
 if (user.getAge() > 18 && user.hasValidId() && user.isNotBlacklisted()) {
@@ -1518,7 +1518,7 @@ Now the `if` condition clearly expresses its intent. The detailed logic is moved
 **Problem:** Multiple conditions lead to the same result, making the code repetitive.  
 **Solution:** Combine these conditions into a single, unified expression.
 
-**Example Before Refactoring:**
+⚠️ **Example Before Refactoring:**
 
 ```java
 double calculateTax() {
@@ -1549,7 +1549,7 @@ Multiple conditions are consolidated into a single helper method, `isNotTaxable`
 **Problem:** Deeply nested conditionals make it hard to follow the normal flow of the program.  
 **Solution:** Use guard clauses to handle special cases early, allowing the main logic to be simpler and flatter.
 
-**Example Before Refactoring:**
+⚠️ **Example Before Refactoring:**
 
 ```java
 public String getMembershipType(int age, boolean isStudent) {
@@ -1587,7 +1587,7 @@ By using guard clauses, special cases (`age < 12`, `age < 18`, `isStudent`) are 
 **Problem:** Conditionals vary behavior based on object types or properties.  
 **Solution:** Use polymorphism by creating subclasses and overriding methods for specific behavior.
 
-**Example Before Refactoring:**
+⚠️ **Example Before Refactoring:**
 
 ```java
 if (shapeType.equals("Circle")) {
@@ -1821,7 +1821,7 @@ The SOLID principles are guidelines in **object-oriented programming** that help
 
 **Purpose:** To separate concerns and ensure that each class does one thing well.
 
-### **Bad Example (Violation)**
+### ⚠️ **Bad Example (Violation)**
 
 A single class handles multiple responsibilities (data storage and printing).
 
